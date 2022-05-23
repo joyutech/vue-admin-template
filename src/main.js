@@ -1,6 +1,8 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
+import Cookies from 'js-cookie'
+
+import 'normalize.css/normalize.css' // a modern alternative to CSS resets
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -28,10 +30,10 @@ if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
 
-// set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
-// 如果想要中文版 element-ui，按如下方式声明
-// Vue.use(ElementUI)
+Vue.use(Element, {
+  size: Cookies.get('size') || 'medium', // set element-ui default size
+  locale: enLang // 如果使用中文，无需设置，请删除
+})
 
 Vue.config.productionTip = false
 
